@@ -1,0 +1,7 @@
+chainlit
+huggingface_hub
+jsonlines
+langchain
+openai
+python-dotenv
+transformers
