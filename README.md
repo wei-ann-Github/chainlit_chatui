@@ -21,25 +21,12 @@ You can experiment with the chat UI with either Docker or Develop locally.
 
 ## Setup in Docker Container
 
-1. Build and Run container using Docker:
-
-Build
-```
-docker build -t chatui -f chainlit/Dockerfile .
-```
-
-Run:
-```
-docker run -p 8000:8000 --rm --env-file .env chatui
-```
-See [Setting ENV VAR](#setting-env-var) for variables to include in ``.env``
-
-2. Build and Run container using docker-compose:
+1. Build and Run container using Docker Compose:
 
 ```
 docker-compose up
 ```
-Add more components into `docker-compose.yml`!
+For future developements, add more containers into `docker-compose.yml`!
 
 ## Setup in Local
 

@@ -1,7 +1,11 @@
 version: '3.3'
 services:
   chainlit:
-    build: ./chainlit
+    build:
+      context: .
+      dockerfile: chainlit/Dockerfile
+      args:
+        - CURRENT_DIR=$PWD
     image: chatui
     env_file:
       - .env
