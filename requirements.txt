@@ -1,7 +1,7 @@
-chainlit
+chainlit==0.6.0
 huggingface_hub
-jsonlines
-langchain
-openai
-python-dotenv
-transformers
+jsonlines==3.1.0
+langchain==0.0.239
+openai==0.27.8
+python-dotenv==1.0.0
+transformers==4.31.0

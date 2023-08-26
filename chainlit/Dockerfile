@@ -12,4 +12,4 @@ COPY $CURRENT_DIR/chainlit/app.py .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Define the command to run when the container starts
-CMD ["chainlit", "run", "app.py"]
+CMD ["chainlit", "run", "app.py", "-w"]

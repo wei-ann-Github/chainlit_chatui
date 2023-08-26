@@ -1,6 +1,8 @@
 version: '3.3'
+name: my-chatui
 services:
   chainlit:
+    container_name: chatui
     build:
       context: .
       dockerfile: chainlit/Dockerfile
