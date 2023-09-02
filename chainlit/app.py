@@ -12,8 +12,12 @@ init_messages = [
         content=system_message
     ),
 ]
+def str_to_bool(s):
+    return s.lower() in ['true', '1', 'yes', 'y']
+TEST = str_to_bool(os.environ.get('TEST', 'False'))
 
 cache = dict()
+
 
 @cl.on_chat_start
 def main():
@@ -43,8 +47,10 @@ async def main(message: str):
     cache[session_id] = messages
 
     # Call the chain asynchronously
-    res = llm_chain(messages, callbacks=[cl.AsyncLangchainCallbackHandler()])  # comment for testing.
-    # res = AIMessage(content='hello, this is a dummy reply. I am not hooked up to a LLM yet.')  # uncomment for testing.
+    if not TEST:
+        res = llm_chain(messages, callbacks=[cl.AsyncLangchainCallbackHandler()])  # comment for testing.
+    else:
+        res = AIMessage(content='hello, this is a dummy reply. I am not hooked up to a LLM yet.')  # uncomment for testing.
     messages.append(res)
 
     # update cache everytime messages get updated.
@@ -54,5 +60,7 @@ async def main(message: str):
     # TODO - Save chat to DB.
 
     # Send the response
-    await cl.Message(content=res.content).send()  # comment for testing.
-    # await cl.Message(content=res).send()  # uncomment for testing.
+    if not TEST:
+        await cl.Message(content=res.content).send()  # comment for testing.
+    else:
+        await cl.Message(content=res).send()  # uncomment for testing.
